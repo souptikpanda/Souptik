@@ -394,12 +394,68 @@ body.dark-mode p, body.dark-mode h1, body.dark-mode h2, body.dark-mode label {
     }
   }
 </script>
-  <!-- Quote Card HTML -->
+ <!-- Quote Card HTML -->
 <div class="quote-card">
   <p id="quote-text">"Loading quote..."</p>
   <span id="quote-author">- Author</span>
   <button class="quote-btn" onclick="generateNewQuote()">New Quote</button>
 </div>
+
+<style>
+  .quote-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin: 20px auto;
+    text-align: center;
+    max-width: 700px;
+  }
+  body.dark-mode .quote-card {
+    background-color: #1e1e1e !important;
+  }
+  #quote-text {
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  #quote-author {
+    display: block;
+    font-weight: bold;
+    color: #2874f0;
+    margin-bottom: 15px;
+  }
+  .quote-btn {
+    background: #2874f0;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  const quotes = [
+    { text: "যদি তোর ডাক শুনে কেউ না আসে তবে একলা চলো রে।", author: "- রবীন্দ্রনাথ ঠাকুর" },
+    { text: "উঠো, জাগো এবং লক্ষ্য না পাওয়া পর্যন্ত থেমো না।", author: "- স্বামী বিবেকানন্দ" },
+    { text: "তোমরা আমাকে রক্ত দাও, আমি তোমাদের স্বাধীনতা দেব!", author: "- নেতাজী সুভাষচন্দ্র বসু" },
+    { text: "If you want to shine like a sun, first burn like a sun.", author: "- Dr. A.P.J. Abdul Kalam" },
+    { text: "জীবে প্রেম করে যেই জন, সেই জন সেবিছে ঈশ্বর।", author: "- স্বামী বিবেকানন্দ" },
+    { text: "You have to dream before your dreams can come true.", author: "- Dr. A.P.J. Abdul Kalam" }
+  ];
+
+  function generateNewQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    document.getElementById('quote-text').innerText = `"${quotes[randomIndex].text}"`;
+    document.getElementById('quote-author').innerText = quotes[randomIndex].author;
+  }
+
+  window.addEventListener('DOMContentLoaded', generateNewQuote);
+</script>
+</body>
+</html>
 </script>
 </body>
 </html>
