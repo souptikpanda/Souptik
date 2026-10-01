@@ -199,6 +199,23 @@ body.dark-mode p, body.dark-mode h1, body.dark-mode h2, body.dark-mode label {
     }
   }
 </script>
+  <audio id="barsaatAudio" src="barsaat-koshalworldcom_DyjgCW00.mp3" preload="auto"></audio>
+
+<script>
+  let originalTitle = document.title;
+  let audio = document.getElementById('barsaatAudio');
+
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      document.title = "Tenne meri yaad aayegi... 🎵";
+      audio.play().catch(e => console.log("Autoplay blocked"));
+    } else {
+      document.title = originalTitle;
+      audio.pause();
+      audio.currentTime = 0;
+    }
+  });
+</script>
   
 </body>
 </html>
