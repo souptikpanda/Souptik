@@ -216,29 +216,9 @@ body.dark-mode p, body.dark-mode h1, body.dark-mode h2, body.dark-mode label {
     }
   });
 </script>
-  <!-- Custom Cursor Element -->
-<div class="custom-cursor"></div>
-
+  
 <style>
-  /* Custom Cursor Styling for Desktop/Laptop */
-  @media (pointer: fine) {
-    body { 
-      cursor: none; 
-    }
-    .custom-cursor {
-      width: 20px;
-      height: 20px;
-      background: rgba(30, 144, 255, 0.6);
-      border: 2px solid #1e90ff;
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s ease, background 0.2s ease;
-      box-shadow: 0 0 12px rgba(30, 144, 255, 0.8);
-    }
-  }
+  
   
   /* Share Button Styling */
   .share-container {
@@ -296,15 +276,6 @@ body.dark-mode p, body.dark-mode h1, body.dark-mode h2, body.dark-mode label {
       alert("Website link copied to clipboard!");
     }
   }
-
-  // 4. Custom Cursor Script
-  const cursor = document.querySelector('.custom-cursor');
-  document.addEventListener('mousemove', (e) => {
-    if (cursor) {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-    }
-  });
 </script>
   <!-- 2. Scroll Progress Bar HTML -->
 <div id="scroll-progress"></div>
