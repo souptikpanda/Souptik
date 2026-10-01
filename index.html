@@ -42,6 +42,31 @@
     .form-group label { display: block; margin-bottom: 5px; font-weight: 600; }
     .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; }
     .submit-btn { background: #2874f0; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; font-size: 16px; }
+    /* Dark Mode Styling */
+body.dark-mode {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+}
+body.dark-mode .card {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 10px rgba(255,255,255,0.05) !important;
+}
+body.dark-mode p, body.dark-mode h1, body.dark-mode h2, body.dark-mode label {
+  color: #ffffff !important;
+}
+
+/* Scroll Animation CSS */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+.scroll-animate.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+    
   </style>
 </head>
 <body>
@@ -53,6 +78,16 @@
   </div>
 
   <div class="container">
+    <!-- Dark Mode Toggle Button -->
+<div style="text-align: right; margin-bottom: 15px;">
+  <button id="theme-toggle" onclick="toggleTheme()" style="padding: 8px 15px; border: none; border-radius: 20px; background: #2874f0; color: white; font-weight: bold; cursor: pointer;">
+    🌙 Dark Mode
+  </button>
+  <a href="https://gemini.google.com" target="_blank" style="display: inline-block; margin-left: 10px; padding: 8px 15px; border-radius: 20px; background: #8e44ad; color: white; text-decoration: none; font-weight: bold;">
+  🤖 Chat with AI
+  </a>
+</div>
+    
     <!-- 2. Profile Section -->
     <div class="card">
       <!-- Updated image file name to pic 18.jpeg -->
@@ -97,6 +132,73 @@
   
     </div>
   </div>
+  <!-- Visitor Counter Section -->
+  <div class="card" style="text-align: center;">
+    <h3>👀 Total Visitors</h3>
+    <img src="https://profile-counter.glitch.me/souptikpanda/count.svg" alt="Visitor Counter" style="height: 30px;">
+  </div>
 
+  <script>
+    // Dark Mode Functionality
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      const btn = document.getElementById('theme-toggle');
+      if (document.body.classList.contains('dark-mode')) {
+        btn.innerText = '☀️ Light Mode';
+      } else {
+        btn.innerText = '🌙 Dark Mode';
+      }
+    }
+
+    // Scroll Animation Script
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => card.classList.add('scroll-animate'));
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    cards.forEach(card => observer.observe(card));
+  </script>
+  <!-- Floating Register Button -->
+<button onclick="toggleRegisterModal()" style="position: fixed; bottom: 20px; right: 20px; z-index: 999; background: #2874f0; color: white; border: none; padding: 12px 20px; border-radius: 30px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+  👤 Register
+</button>
+
+<!-- Register Modal -->
+<div id="registerModal" style="display: none; position: fixed; bottom: 80px; right: 20px; z-index: 1000; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.3); width: 300px;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+    <h3 style="margin: 0; color: #333;">Create Account</h3>
+    <span onclick="toggleRegisterModal()" style="cursor: pointer; font-weight: bold; font-size: 18px; color: #888;">&times;</span>
+  </div>
+  
+  <form action="https://formspree.io/f/xaenkper" method="POST">
+    <div style="margin-bottom: 10px;">
+      <label style="font-size: 12px; font-weight: bold; color: #555;">Name:</label>
+      <input type="text" name="Registered_Name" placeholder="Enter full name" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
+    </div>
+    <div style="margin-bottom: 10px;">
+      <label style="font-size: 12px; font-weight: bold; color: #555;">Email:</label>
+      <input type="email" name="Registered_Email" placeholder="Enter email" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
+    </div>
+    <button type="submit" style="width: 100%; background: #2874f0; color: white; border: none; padding: 8px; border-radius: 5px; font-weight: bold; cursor: pointer;">Submit</button>
+  </form>
+</div>
+
+<script>
+  function toggleRegisterModal() {
+    const modal = document.getElementById('registerModal');
+    if (modal.style.display === 'none' || modal.style.display === '') {
+      modal.style.display = 'block';
+    } else {
+      modal.style.display = 'none';
+    }
+  }
+</script>
+  
 </body>
 </html>
